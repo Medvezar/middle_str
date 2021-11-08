@@ -34,3 +34,20 @@ bool itc_compare(string str1, string str2){ // 4
     }
     return true;
 }
+
+
+int itc_kol_slov(string str){
+    int numTime = 0;
+    int times = 0;
+    bool test = false;
+    while (str[times] != '\0'){
+        if (test == false && str[times] != ' '){
+            test = true;
+            numTime++;
+        }
+        else if (str[times] == ' ')
+            test = false;
+        times++;
+    }
+    return numTime;
+}
