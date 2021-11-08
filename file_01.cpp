@@ -23,3 +23,14 @@ unsigned char itc_register(unsigned char ch1){ // 3
     return ch1;
 
 }
+
+
+bool itc_compare(string str1, string str2){ // 4
+    int times = 0;
+    while (str1[times] != '\0' || str2[times] != '\0'){
+        if (str1[times] != str2[times])
+            return false;
+        times++;
+    }
+    return true;
+}
