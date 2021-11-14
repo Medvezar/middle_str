@@ -9,11 +9,10 @@ string itc_maxCharWord(string str) { // 6
     while (ch1 != '\0') {
         ch1 = str[times];
         times++;
-        if (ch1 == ' ')
-            txt = "";
-        else if (ch1 >= 97 && ch1 <= 122) {
+        if (ch1 >= 97 && ch1 <= 122)
             txt += ch1;
-        }
+        else
+            txt = "";
         if(lenText < itc_len(txt)) {
             text = txt;
             lenText = itc_len(txt);
