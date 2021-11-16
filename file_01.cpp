@@ -41,7 +41,7 @@ int itc_countWords(string str) { // 5
     int times = 0;
     bool test = false;
     while (str[times] != '\0') {
-        if (test == false && str[times] != ' ' && (str[times] >= 97 && str[times] <= 122)){
+        if (test == false && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90))) {
             test = true;
             numTime++;
         }
@@ -50,3 +50,4 @@ int itc_countWords(string str) { // 5
         times++;
     }
     return numTime;
+}
