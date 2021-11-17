@@ -44,13 +44,13 @@ string itc_DecToBin(string str) {
 	int times = 0;
 	str += "|";
 	while (str[times] != '\0') {
-		times++;
 		if (str[times] >= 48 && str[times] <= 57)
 			text += str[times];
 		else {
 			textRes += to_bin(text);
 			text = "";
 		}
+		times++;
 	}
 	return textRes;
 }
