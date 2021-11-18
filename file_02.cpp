@@ -5,6 +5,7 @@ string itc_maxCharWord(string str) { // 6
     long long lenText = 0;
     long times = 0;
     string txt = "";
+    str += ' ';
     char ch1 = str[times];
     while (ch1 != '\0') {
         ch1 = str[times];
@@ -16,7 +17,7 @@ string itc_maxCharWord(string str) { // 6
                 text = txt;
                 lenText = itc_len(txt);
             }
-            txt = ""
+            txt = "";
         }
     }
     if (itc_len(str) > lenText)
