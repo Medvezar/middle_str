@@ -22,4 +22,4 @@ string itc_Cezar(string str, int change); // 9
 string itc_rmFreeSpace(string str); // 10
 bool itc_isIp(string str); // 11
 string itc_DecToBin(string str); // 12
-string itc_decToBase(int num1, int base); // 13
+string itc_decToBase(int text, int base); // 13

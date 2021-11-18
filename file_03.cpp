@@ -63,7 +63,7 @@ string itc_DecToBin(string str) {
 
 string itc_decToBase(int num1, int base){
     string numRes = "";
-    string num = to_strInt(num1)
+    string num = to_strInt(num1;
     char ch1;
     long num1 = to_intStr(num), times = 0;
     while (num1 > 0) {

@@ -34,7 +34,7 @@ string to_strInt(int num) {
     int times = 0, num1 = num, count = 0;
     while (num1 > 0) {
         times++;
-        num1 / 10;
+        num1 /= 10;
     }
     while (num != 0) {
         textRes += num + 48;
