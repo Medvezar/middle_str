@@ -30,6 +30,7 @@ char itc_sameChar(string str) { // 7
     char ch1 = str[times];
     char ch2 = str[times2];
     while (ch1 != '\0') {
+        times2 = 0;
         while (ch2 != '\0') {
             ch2 = str[times2];
             if (times != times2 && ch1 == ch2)
