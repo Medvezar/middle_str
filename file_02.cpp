@@ -100,14 +100,16 @@ string itc_Cezar(string str, int changeNum) {
 string itc_rmFreeSpace(string str) {
     int times = 0;
     bool test = false;
+    bool startCh = false;
     string textRes = "";
     while (str[times] != '\0') {
-        if (test == false && str[times] == ' ') {
+        if (test == false && str[times] == ' ' && startCh == true) {
             textRes += str[times];
             test = true;
         }
         else if (str[times] != ' ') {
             test = false;
+            startCh == true;
             textRes += str[times];
         }
         times++;
