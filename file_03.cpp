@@ -54,3 +54,21 @@ string itc_DecToBin(string str) {
 	}
 	return textRes;
 }
+
+
+string itc_decToBase(string num, int base){
+    string numRes = "";
+    char ch1;
+    long num1 = to_intStr(num), times = 0;
+    while (num1 > 0) {
+        if (num1 % base > 9){
+            ch1 = 'A' + (num1 % base) - 10;
+        }
+        else
+            ch1 = num1 % base + 48;
+        numRes += ch1;
+        num1 /= base;
+    }
+    numRes = reverse(numRes);
+    return numRes;
+}
