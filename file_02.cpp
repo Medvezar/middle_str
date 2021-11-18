@@ -108,12 +108,12 @@ string itc_rmFreeSpace(string str) {
     string textRes = "";
     while (str[times] != '\0') {
         if (test == false && str[times] == ' ' && startCh == true) {
-            textRes += str[times];
+            textRes += ' ';
             test = true;
         }
         else if (str[times] != ' ') {
             test = false;
-            startCh == true;
+            startCh = true;
             textRes += str[times];
         }
         times++;
