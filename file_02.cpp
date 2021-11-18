@@ -27,7 +27,6 @@ string itc_maxCharWord(string str) { // 6
 char itc_sameChar(string str) { // 7
     long times = 0;
     long times2 = 0;
-    int ch1Count = 0;
     char ch1 = str[times];
     char ch2 = str[times2];
     while (ch1 != '\0') {

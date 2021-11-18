@@ -41,20 +41,25 @@ bool itc_isIp(string str) {
 
 string itc_DecToBin(string str) {
 	string textRes = "", text = "";
-	int times = 0;
-	str += "|";
-	while (str[times] != '\0') {
+	int times = 0, len = 1;
+	while (str[times] != '\0'){
+        times++;
+        len++;
+	}
+	times = 0;
+	while (times < len) {
 		if (str[times] >= 48 && str[times] <= 57)
 			text += str[times];
 		else {
-			textRes += to_bin(text);
+		    if (to_bin(text) != "")
+                textRes += to_bin(text);
+            textRes += str[times];
 			text = "";
 		}
 		times++;
 	}
 	return textRes;
 }
-
 
 string itc_decToBase(string num, int base){
     string numRes = "";
@@ -69,6 +74,6 @@ string itc_decToBase(string num, int base){
         numRes += ch1;
         num1 /= base;
     }
-    numRes = reverse(numRes);
+    numRes = reverse1(numRes);
     return numRes;
 }

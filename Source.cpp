@@ -9,7 +9,7 @@ long long itc_len(string text) {
 }
 
 
-long itc_pow(double num1, double num2) { // 
+long itc_pow(double num1, double num2) { //
     int num3;
     num3 = num1;
     for (int n1 = 1; n1 < abs1(num2); n1++) {
@@ -56,7 +56,7 @@ int to_intStr(string text) {
     return numRes / 10;
 }
 
-string reverse(string text) {
+string reverse1(string text) {
     string textRes = "";
     int len = 0, times = 0;
     while (text[times] != '\0')
@@ -76,6 +76,6 @@ string to_bin(string num) {
         numRes += ch1;
         num1 /= 2;
     }
-    numRes = reverse(numRes);
+    numRes = reverse1(numRes);
     return numRes;
 }
