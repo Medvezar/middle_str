@@ -39,19 +39,17 @@ bool itc_compare(string str1, string str2) { // 4
 int itc_countWords(string str) { // 5
     int numTime = 0;
     int times = 0;
-    bool startWord = false;
+    bool test = false;
     while (str[times] != '\0') {
-        if (startWord == false && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90))) {
-            startWord = true;
+        if (test == false && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90))) {
+            test = true;
             numTime++;
         }
-        else if (startWord == false && str[times] != ' ' && !((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90))){
+        else if (test == false && !((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90)) && str[times] != ' ')
             numTime--;
-        }
         else if (str[times] == ' ')
             test = false;
         times++;
     }
     return numTime;
 }
-
