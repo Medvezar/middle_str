@@ -62,7 +62,7 @@ string reverse(string text) {
     while (text[times] != '\0')
         times++;
     len = times;
-    for (int n1 = len; n1 >= 0; n1--)
+    for (int n1 = len - 1; n1 >= 0; n1--)
         textRes += text[n1];
     return textRes;
 }
