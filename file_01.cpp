@@ -52,6 +52,8 @@ int itc_countWords(string str) { // 5
             test = false;
         times++;
     }
+    if (str == "")
+        return 0;
     return numTime;
 }
 
