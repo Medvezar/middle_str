@@ -1,48 +1,48 @@
 #include "middle_str.h"
 
 string itc_maxCharWord(string str) { // 6
-    string text = "";
-    long long lenText = 0;
-    long times = 0;
-    string txt = "";
-    str += ' ';
-    char ch1 = str[times];
-    while (ch1 != '\0') {
-        ch1 = str[times];
-        times++;
-        if (ch1 != ' ')
-            txt += ch1;
-        else{
-            if(lenText < itc_len(txt)) {
-                text = txt;
-                lenText = itc_len(txt);
-            }
-            txt = "";
+    int lenText = 0, times = 0;
+    string resText = "", text = "";
+    bool isWord = false;
+    str += " ";
+    while (str[times] != '\0') {
+        if (isWord == false && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90))) {
+            isWord = true;
+            text += str[times];
         }
+        else if (isWord == true && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90)))
+            text += str[times];
+        else if (str[times] == ' ') {
+            if (itc_len(text) > lenText) {
+                lenText = itc_len(text);
+                resText = text;
+            }
+            text = "";
+        }
+        else
+            isWord = false;
+        times++;
     }
-    if (itc_len(str) > lenText)
-        return text;
-    return "error";
+    return resText;
 }
 
 
 char itc_sameChar(string str) { // 7
-    long times = 0;
-    long times2 = 0;
-    char ch1 = str[times];
-    char ch2 = str[times2];
-    while (ch1 != '\0') {
-        times2 = 0;
-        ch1 = str[times2];
-        while (ch2 != '\0') {
-            ch2 = str[times2];
-            if (times != times2 && ch1 == ch2)
-                return ch1;
-            times2++;
+    char ch1 = ' ';
+    int times;
+    for (int n1 = 0; n1 < itc_len(str); n1++) {
+        if (str[n1] != ' ') {
+            ch1 = str[n1];
+            times = 0;
+            while (str[times] != '\0') {
+                if (times != n1) {
+                    if (str[times] == ch1)
+                        return ch1;
+                }
+            }
         }
-        times++;
     }
-    return ch1;
+    return ' ';
 }
 
 bool itc_isFirstInSecond(string str2, string str1) { // 8
@@ -121,3 +121,4 @@ string itc_rmFreeSpace(string str) {
     }
     return textRes;
 }
+
