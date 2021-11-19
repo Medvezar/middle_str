@@ -103,22 +103,23 @@ string itc_Cezar(string str, int changeNum) {
 }
 
 string itc_rmFreeSpace(string str) {
+    bool isWord = false, isStart = true, moreThenOne = false;
     int times = 0;
-    bool test = false;
-    bool startCh = false;
-    string textRes = "";
+    string resText = "";
+    if (str == "")
+        return "";
     while (str[times] != '\0') {
-        if (test == false && str[times] == ' ' && startCh == true) {
-            textRes += ' ';
-            test = true;
+        if (isStart == true && str[times] != ' ') {
+            resText += str[times];
+            moreThenOne = false;
+            isStart = false;
         }
-        else if (str[times] != ' ') {
-            test = false;
-            startCh = true;
-            textRes += str[times];
+        else if (isStart == false && str[times] == ' ' and moreThenOne == false) {
+            resText += str[times];
+            moreThenOne = true;
         }
         times++;
     }
-    return textRes;
+    return resText;
 }
 
