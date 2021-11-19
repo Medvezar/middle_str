@@ -46,22 +46,21 @@ char itc_sameChar(string str) { // 7
 }
 
 bool itc_isFirstInSecond(string str2, string str1) { // 8
-    bool test = true;
-    char text1 = 'a';
-    char text2 = 'a';
+    bool isCorrect = true;
+    int numTest;
     for (int n1 = 0; n1 < itc_len(str1); n1++) {
-        if (str1[n1] == str2[0]) {
-            test = true;
-            if ((itc_len(str1) - (n1 + 1)) >= itc_len(str2) - 1) {
-                for (int n2 = 1; n2 < itc_len(str2); n2++) {
-                    text1 = str1[n1 + n2];
-                    text2 = str2[n2];
-                    if (text1 != text2)
-                        test = false;
-                }
-                if (test == true)
-                    return true;
+        if (n1 > itc_len(str2) - 1)
+            return false;
+        else if (str1[n1] == str2[0]) {
+            isCorrect = true;
+            numTest = n1;
+            for (int n2 = 1; n2 < itc_len(str2); n2++) {
+                numTest += n2;
+                if (str1[numTest] != str2[n2])
+                    isCorrect = false;
             }
+            if (isCorrect == true)
+                return true;
         }
     }
     return false;
