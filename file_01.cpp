@@ -40,16 +40,18 @@ int itc_countWords(string str) { // 5
     int numTime = 0;
     int times = 0;
     bool test = false;
+    str += ' ';
     while (str[times] != '\0') {
-        if (test == false && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90))) {
+        if (test == true && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90)))
             test = true;
+        else if (test == true && str[times] == ' ')
             numTime++;
-        }
-        else if (test == false && !((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90)) && str[times] != ' ')
-            numTime--;
-        else if (str[times] == ' ')
+        else if (test == false && str[times] != ' ')
+            test = true;
+        else
             test = false;
         times++;
     }
     return numTime;
 }
+
