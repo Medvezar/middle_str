@@ -39,6 +39,7 @@ char itc_sameChar(string str) { // 7
                     if (str[times] == ch1)
                         return ch1;
                 }
+                times++;
             }
         }
     }
@@ -49,13 +50,14 @@ bool itc_isFirstInSecond(string str2, string str1) { // 8
     bool isCorrect = true;
     int numTest;
     for (int n1 = 0; n1 < itc_len(str1); n1++) {
-        if (n1 > itc_len(str2) - 1)
+        if (n1 > itc_len(str2))
             return false;
         else if (str1[n1] == str2[0]) {
             isCorrect = true;
             numTest = n1;
-            for (int n2 = 1; n2 < itc_len(str2); n2++) {
+            for (int n2 = 0; n2 < itc_len(str2); n2++) {
                 numTest += n2;
+                cout << str1[numTest] << endl << str2[n2] << endl;
                 if (str1[numTest] != str2[n2])
                     isCorrect = false;
             }
@@ -108,7 +110,7 @@ string itc_rmFreeSpace(string str) {
     if (str == "")
         return "";
     while (str[times] != '\0') {
-        if (isStart == true && str[times] != ' ') {
+        if (str[times] != ' ') {
             resText += str[times];
             moreThenOne = false;
             isStart = false;
@@ -121,4 +123,3 @@ string itc_rmFreeSpace(string str) {
     }
     return resText;
 }
-

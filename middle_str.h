@@ -4,6 +4,7 @@
 #include <string>
 using namespace std;
 
+
 long long itc_len(string str1); // test func
 long long abs1(long long num); // test func
 string to_strInt(int num); // test func
