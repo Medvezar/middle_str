@@ -38,21 +38,25 @@ bool itc_compare(string str1, string str2) { // 4
 
 int itc_countWords(string str) { // 5
     int numTime = 0;
-    int times = 0;
-    bool test = false;
+    int times = 0, count;
+    char ch1 = ' ';
+    string test = "";
     str += ' ';
     while (str[times] != '\0') {
-        if (test == true && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90)))
-            test = true;
-        else if (test == true && str[times] == ' ')
-            numTime++;
-        else if (test == false && str[times] != ' ')
-            test = true;
-        else
-            test = false;
+        if (str[times] != ' ')
+            test += str[times];
+        else {
+            count = 0;
+            for (int n1 = 0; n1 < itc_len(test); n1++) {
+                ch1 = test[n1];
+                if ((ch1 >= 'a' && ch1 <= 'z') || (ch1 >= 'A' && ch1 <= 'Z'))
+                    count++;
+            }
+            if (count == itc_len(test))
+                numTime++;
+            test = "";
+        }
         times++;
     }
-    if (str == "")
-        return 0;
     return numTime;
 }

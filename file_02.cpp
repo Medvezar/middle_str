@@ -4,27 +4,24 @@ string itc_maxCharWord(string str) { // 6
     int lenText = 0, times = 0;
     string resText = "", text = "";
     bool isWord = false;
+    char ch1 = ' ';
     str += " ";
-    while (str[times] != '\0') {
-        if (isWord == false && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90))) {
-            isWord = true;
-            text += str[times];
-        }
-        else if (isWord == true && ((str[times] >= 97 && str[times] <= 122) || (str[times] >= 65 && str[times] <= 90)))
-            text += str[times];
-        else if (str[times] == ' ') {
-            if (itc_len(text) > lenText) {
-                lenText = itc_len(text);
+    while (times < itc_len(str)) {
+        ch1 = str[times];
+        if ((ch1 == ' ' || ch1 == '\0')) {
+            if (itc_len(text) > itc_len(resText))
                 resText = text;
-            }
             text = "";
         }
-        else
-            isWord = false;
+        else if ((ch1 >= 'a' && ch1 <= 'z') || (ch1 >= 'A' && ch1 <= 'Z'))
+            text += ch1;
         times++;
     }
+    if (itc_len(str) == itc_len(resText))
+        return "error";
     return resText;
 }
+
 
 
 char itc_sameChar(string str) { // 7
@@ -48,17 +45,11 @@ char itc_sameChar(string str) { // 7
 
 bool itc_isFirstInSecond(string str2, string str1) { // 8
     bool isCorrect = true;
-    int numTest;
     for (int n1 = 0; n1 < itc_len(str1); n1++) {
-        if (n1 > itc_len(str2))
-            return false;
-        else if (str1[n1] == str2[0]) {
+        if (str1[n1] == str2[0]) {
             isCorrect = true;
-            numTest = n1;
             for (int n2 = 0; n2 < itc_len(str2); n2++) {
-                numTest += n2;
-                cout << str1[numTest] << endl << str2[n2] << endl;
-                if (str1[numTest] != str2[n2])
+                if (str1[n1 + n2] != str2[n2])
                     isCorrect = false;
             }
             if (isCorrect == true)
@@ -68,58 +59,63 @@ bool itc_isFirstInSecond(string str2, string str1) { // 8
     return false;
 }
 
-string itc_Cezar(string str, int changeNum) {
+
+string itc_Cezar(string str, int change) {
     string textRes = "";
-    int times = 0;
-    int change;
+    int times = 0; 
+    char test = ' ';
     while (str[times] != '\0') {
-        change = changeNum;
-        if (str[times] >= 65 && str[times] <= 90) {
-            if (str[times] + change > 90) {
-                change = changeNum % 26;
-                textRes += 64 + change;
-            }
-            else if (str[times] + change < 65) {
-                change = changeNum % 26;
-                textRes += change + 91;
-            }
-            else
-                textRes += str[times] + change;
+        if (str[times] >= 'a' && str[times] <= 'z') {
+            test = 25 - ('z' - str[times]) + change;
+            if (test > 25)
+                test -= 26;
+            else if (test < 0)
+                test += 26;
+            textRes += 'a' + test;
         }
-        else if (str[times] >= 97 && str[times] <= 122) {
-            if (str[times] + change > 122) {
-                change = changeNum % 26;
-                textRes += 96 + change;
-            }
-            else if (str[times] + change < 97) {
-                change = changeNum % 26;
-                textRes += 123 + change;
-            }
-            else
-                textRes += str[times] + change;
+        else if (str[times] >= 'A' && str[times] <= 'Z') {
+            test = 25 - ('Z' - str[times]) + change;
+            if (test > 25)
+                test -= 26;
+            else if (test < 0)
+                test += 26;
+            textRes += 'A' + test;
         }
         times++;
     }
+    if (str == "")
+        return "";
     return textRes;
 }
+
+
+
 
 string itc_rmFreeSpace(string str) {
     bool isWord = false, isStart = true, moreThenOne = false;
     int times = 0;
-    string resText = "";
+    string resText = "", test = "";
     if (str == "")
         return "";
-    while (str[times] != '\0') {
+    while (str[times] < itc_len(str)) {
         if (str[times] != ' ') {
             resText += str[times];
             moreThenOne = false;
             isStart = false;
         }
-        else if (isStart == false && str[times] == ' ' and moreThenOne == false) {
+        else if (isStart == false && str[times] == ' ' && moreThenOne == false) {
             resText += str[times];
             moreThenOne = true;
         }
         times++;
+    }
+    times = 0;
+    if (resText[itc_len(resText) - 1] == ' ') {
+        while (times < itc_len(resText) - 1) {
+            test += resText[times];
+            times++;
+        }
+        return test;
     }
     return resText;
 }
