@@ -6,9 +6,11 @@ string itc_maxCharWord(string str) { // 6
     bool isWord = false;
     char ch1 = ' ';
     str += " ";
+    if (str == "")
+        return "error";
     while (times < itc_len(str)) {
         ch1 = str[times];
-        if ((ch1 == ' ' || ch1 == '\0')) {
+        if (ch1 == ' ') {
             if (itc_len(text) > itc_len(resText))
                 resText = text;
             text = "";
@@ -44,18 +46,12 @@ char itc_sameChar(string str) { // 7
 }
 
 bool itc_isFirstInSecond(string str2, string str1) { // 8
-    bool isCorrect = true;
-    for (int n1 = 0; n1 < itc_len(str1); n1++) {
-        if (str1[n1] == str2[0]) {
-            isCorrect = true;
-            for (int n2 = 0; n2 < itc_len(str2); n2++) {
-                if (str1[n1 + n2] != str2[n2])
-                    isCorrect = false;
-            }
-            if (isCorrect == true)
-                return true;
-        }
-    }
+    if (find_str(str2, str1) == true)
+        return true;
+    else if (str2 == str1)
+        return true;
+    else if (str2 == "")
+        return true;
     return false;
 }
 

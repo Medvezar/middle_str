@@ -79,3 +79,23 @@ string to_bin(string num) {
     numRes = reverse1(numRes);
     return numRes;
 }
+
+
+bool find_str(string str1, string str2) {
+    int num = 0, times = 0, res_num = 0;
+    for (int n1 = 0; n1 < itc_len(str1); n1++) {
+        if (str1[n1] == str2[num]) {
+            if (num == 0)
+                res_num = n1;
+            num++;
+            times++;
+            if (times == itc_len(str2))
+                return true;
+        }
+        else {
+            num = 0;
+            times = 0;
+        }
+    }
+    return false;
+}

@@ -11,6 +11,7 @@ string to_strInt(int num); // test func
 int to_intStr(string text); // test func
 string to_bin(string text); // test func
 string reverse1(string text); // test func
+bool find_str(string str1, string str2);
 bool itc_isDigit(unsigned char ch1); // 1
 unsigned char itc_toUpper(unsigned char ch1); // 2
 unsigned char itc_changeCase(unsigned char ch1); // 3
